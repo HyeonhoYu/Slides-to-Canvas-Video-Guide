@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slides to Canvas Video Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: friendly studio coach, clear steps, zero jargon
+   IDEA: a recording studio call sheet: Record, Upload, Post
+   PICTURE: a slide with a face bubble in the corner traveling to YouTube and Canvas
+   COLOUR and TYPE: white, ink, record-light red, deep studio blue; Plus Jakarta Sans
+   LAYOUT: hero picture, sticky step nav, three numbered stations, link tool, fixes, checklist */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0f1620);--ink:light-dark(#141a22,#eef2f6);--soft:light-dark(#5a6573,#a9b4c0);
+--band:light-dark(#f2f5f9,#162130);--line:light-dark(#dde3ea,#26364a);
+--red:#e5322d;--blue:light-dark(#1d3f6e,#7fb0ee);--deep:light-dark(#1d3f6e,#0b1a2c);--card:light-dark(#fff,#13202f)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Plus Jakarta Sans",system-ui,sans-serif;overflow-x:clip}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+a{color:var(--blue)}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.05;margin:0 0 14px;text-wrap:balance;font-weight:800}
+h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;margin:0 0 8px;text-wrap:balance}
+h3{font-size:19px;margin:22px 0 6px}
+p{max-width:68ch}
+.lede{font-size:17px;color:var(--soft)}
+.hero{background:var(--deep);color:#fff}
+.hero .lede{color:#c9d6e6}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;align-items:center}
+.fig{position:relative;min-height:320px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pill{background:rgba(255,255,255,.12);color:#fff;border-radius:99px;padding:6px 14px;font-size:14px;text-decoration:none}
+.pill b{color:#ffb4b1}
+nav.steps{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.steps .scroll{display:flex;gap:4px;padding:8px max(5vw,16px);max-width:1240px;margin:0 auto}
+nav.steps a{flex:none;text-decoration:none;color:var(--ink);padding:10px 14px;border-radius:10px;font-weight:600;font-size:15px;min-height:44px}
+nav.steps a:hover,nav.steps a:focus-visible{background:var(--band)}
+.scroll{overflow-x:auto}
+@media(max-width:900px){nav.steps{position:static}}
+.num{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;margin-right:10px;vertical-align:middle}
+.alt{background:var(--band)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.tabs button{font:inherit;font-weight:600;font-size:15px;min-height:44px;padding:8px 16px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--blue);border-color:var(--blue);color:var(--bg)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:clamp(16px,3vw,28px);margin-top:12px}
+.panel[hidden]{display:none}
+ol.do{padding-left:1.3em;margin:8px 0}ol.do li{margin:7px 0;padding-left:4px}
+kbd,.ui{font:600 14px/1 "Plus Jakarta Sans",sans-serif;background:var(--band);border:1px solid var(--line);border-radius:6px;padding:3px 7px;white-space:nowrap}
+.note{border-left:4px solid var(--red);background:var(--band);padding:10px 14px;border-radius:0 10px 10px 0;margin:14px 0;max-width:72ch}
+.alt .note{background:var(--card)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:16px}
+.tip{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.tip b{display:block;margin-bottom:2px}
+table{border-collapse:collapse;width:100%;margin-top:12px;font-size:15px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:14px;color:var(--soft)}
+.tool{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+label{font-weight:600;display:block;margin-bottom:6px}
+input[type=text]{width:100%;font:inherit;font-size:16px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);min-height:48px}
+.out{margin-top:12px}
+.out .row{display:flex;gap:8px;align-items:stretch;margin-top:6px}
+.out code{flex:1;display:block;background:var(--band);border:1px solid var(--line);border-radius:8px;padding:10px;font-size:13px;overflow-wrap:anywhere;font-family:ui-monospace,Menlo,monospace}
+.copy{font:inherit;font-weight:600;font-size:14px;min-width:76px;min-height:44px;border:0;border-radius:8px;background:var(--red);color:#fff;cursor:pointer}
+.msg{font-size:14px;color:var(--soft);min-height:1.4em}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:10px}
+summary{cursor:pointer;padding:14px 16px;font-weight:600;min-height:44px}
+details>div{padding:0 16px 14px}
+.check{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px;max-width:760px}
+.check label{display:flex;gap:12px;align-items:flex-start;font-weight:400;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;margin:0}
+.check input{width:22px;height:22px;flex:none;accent-color:var(--red);margin-top:2px}
+.bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden;max-width:760px;margin-top:14px}
+.bar i{display:block;height:100%;background:var(--red);width:0;transition:width .3s}
+footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
+@media(max-width:760px){.hgrid,.tool{grid-template-columns:minmax(0,1fr)}.fig{min-height:240px}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;font-weight:600}.stack td:empty{display:none}}
+.rec{animation:blink 1.6s infinite}@keyframes blink{50%{opacity:.25}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band hero">
+ <div class="wrap hgrid">
+  <div>
+   <h1>From slides to Canvas: your presentation video in three steps</h1>
+   <p class="lede">You already made the slides. This guide walks you through recording yourself presenting with your face on screen, uploading the video to YouTube, and posting the link in Canvas so your instructor and classmates can watch it.</p>
+   <div class="pills">
+    <a class="pill" href="#record"><b>1</b> Record with your face</a>
+    <a class="pill" href="#upload"><b>2</b> Upload to YouTube</a>
+    <a class="pill" href="#canvas"><b>3</b> Post in Canvas</a>
+   </div>
+  </div>
+  <div class="fig" aria-hidden="true">
+   <svg viewBox="0 0 560 340" preserveAspectRatio="xMidYMid meet">
+    <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6edf5"/></linearGradient></defs>
+    <ellipse cx="170" cy="300" rx="150" ry="14" fill="#000" opacity=".25"/>
+    <rect x="20" y="40" width="300" height="200" rx="14" fill="url(#g1)"/>
+    <rect x="20" y="40" width="300" height="26" rx="14" fill="#cfd9e5"/>
+    <circle cx="40" cy="53" r="5" fill="#e5322d" class="rec"/>
+    <text x="52" y="58" font-size="13" font-weight="700" fill="#1d3f6e" font-family="Plus Jakarta Sans,sans-serif">REC</text>
+    <rect x="44" y="86" width="150" height="16" rx="5" fill="#1d3f6e"/>
+    <rect x="44" y="114" width="200" height="9" rx="4" fill="#9fb2c8"/>
+    <rect x="44" y="132" width="170" height="9" rx="4" fill="#9fb2c8"/>
+    <rect x="44" y="150" width="120" height="9" rx="4" fill="#9fb2c8"/>
+    <rect x="44" y="176" width="90" height="44" rx="6" fill="#f6b8b5"/>
+    <circle cx="268" cy="196" r="38" fill="#1d3f6e" stroke="#fff" stroke-width="5"/>
+    <circle cx="268" cy="186" r="13" fill="#f2c9a5"/>
+    <path d="M244 222c4-16 14-22 24-22s20 6 24 22" fill="#f2c9a5"/>
+    <rect x="150" y="240" width="40" height="40" fill="#cfd9e5"/>
+    <rect x="110" y="278" width="120" height="10" rx="5" fill="#cfd9e5"/>
+    <path d="M330 140 C360 110 380 100 400 100" fill="none" stroke="#ffb4b1" stroke-width="3" stroke-dasharray="6 7"/>
+    <rect x="400" y="62" width="140" height="84" rx="14" fill="#e5322d"/>
+    <path d="M458 88 L486 104 L458 120 Z" fill="#fff"/>
+    <text x="470" y="166" text-anchor="middle" font-size="14" fill="#fff" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">Unlisted</text>
+    <path d="M470 176 C470 196 470 206 470 214" fill="none" stroke="#ffb4b1" stroke-width="3" stroke-dasharray="6 7"/>
+    <rect x="400" y="218" width="140" height="84" rx="14" fill="#fff"/>
+    <rect x="400" y="218" width="140" height="22" rx="10" fill="#cfd9e5"/>
+    <rect x="414" y="250" width="56" height="34" rx="4" fill="#1d3f6e"/>
+    <path d="M436 259 L450 267 L436 275 Z" fill="#fff"/>
+    <rect x="478" y="252" width="50" height="7" rx="3" fill="#9fb2c8"/>
+    <rect x="478" y="266" width="40" height="7" rx="3" fill="#9fb2c8"/>
+    <text x="470" y="324" text-anchor="middle" font-size="14" fill="#fff" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">Canvas</text>
+   </svg>
+  </div>
+ </div>
+</header>
+
+<nav class="steps" aria-label="Sections"><div class="scroll">
+ <a href="#record">1. Record</a><a href="#upload">2. YouTube</a><a href="#canvas">3. Canvas</a><a href="#tool">Link and embed maker</a><a href="#fix">Fix a problem</a><a href="#checklist">Final checklist</a>
+</div></nav>
+
+<section class="band" id="record"><div class="wrap">
+ <h2><span class="num">1</span>Record your presentation with your face visible</h2>
+ <p class="lede">Pick the tool you made your slides in. Each one can show your webcam in a small window while you talk through your slides. The goal is one video file (MP4) or a recording you can download.</p>
+ <div class="tabs" role="tablist" data-group="rec">
+  <button role="tab" aria-selected="true" data-tab="ppt">PowerPoint</button>
+  <button role="tab" aria-selected="false" data-tab="canva">Canva</button>
+  <button role="tab" aria-selected="false" data-tab="gs">Google Slides</button>
+  <button role="tab" aria-selected="false" data-tab="zoom">Zoom (works with any slides)</button>
+ </div>
+ <div class="panel" data-panel="rec:ppt">
+  <h3>PowerPoint (desktop app)</h3>
+  <ol class="do">
+   <li>Open your slides and go to the <span class="ui">Record</span> tab, then choose <span class="ui">From Beginning</span>.</li>
+   <li>In the recording window, make sure the camera and microphone are turned on (check the icons at the bottom right). Pick the right camera and mic in the settings if needed.</li>
+   <li>Press the red record button, wait for the 3 second countdown, and present. Use the arrows to move between slides.</li>
+   <li>Press stop when you finish, then close the recording window.</li>
+   <li>Go to <span class="ui">File</span>, <span class="ui">Export</span>, <span class="ui">Create a Video</span>. Choose Full HD (1080p), keep "Use Recorded Timings and Narrations," and save as <b>MP4</b>.</li>
+  </ol>
+  <div class="note">Exporting can take several minutes. Keep PowerPoint open until the progress bar at the bottom of the window finishes.</div>
+ </div>
+ <div class="panel" data-panel="rec:canva" hidden>
+  <h3>Canva</h3>
+  <ol class="do">
+   <li>Open your presentation and click <span class="ui">Share</span>, then look for <span class="ui">Present and record</span> (you may need to click <span class="ui">See all</span>).</li>
+   <li>Click <span class="ui">Go to recording studio</span> and allow Canva to use your camera and microphone in the browser.</li>
+   <li>Pick your camera and mic, then click <span class="ui">Start recording</span>. Your face appears in a circle on the slide.</li>
+   <li>Move through the slides with the arrows. Click <span class="ui">End recording</span> when you finish.</li>
+   <li>Click <span class="ui">Download</span> to save the MP4 to your computer. You will upload this file to YouTube.</li>
+  </ol>
+  <div class="note">You can drag your face bubble so it does not cover text on a slide.</div>
+ </div>
+ <div class="panel" data-panel="rec:gs" hidden>
+  <h3>Google Slides</h3>
+  <ol class="do">
+   <li>Open your slides. If you see a <span class="ui">Rec</span> button at the top right, click it, then choose <span class="ui">Record new video</span>.</li>
+   <li>Allow camera and microphone access. Your camera view appears next to the slide.</li>
+   <li>Click the red button to start, present your slides, then click <span class="ui">Stop</span>.</li>
+   <li>Click <span class="ui">Save to Drive</span>. Open the video in Google Drive and download it as a file.</li>
+  </ol>
+  <div class="note">The Rec button is not available on every Google account. If you do not see it, use the Zoom tab instead, or download your slides as a PowerPoint file (<span class="ui">File</span>, <span class="ui">Download</span>, <span class="ui">Microsoft PowerPoint</span>) and follow the PowerPoint steps.</div>
+ </div>
+ <div class="panel" data-panel="rec:zoom" hidden>
+  <h3>Zoom (by yourself, no one else in the meeting)</h3>
+  <ol class="do">
+   <li>Open your slides on your computer first. Then open the Zoom desktop app and click <span class="ui">New Meeting</span> with your video on.</li>
+   <li>Click <span class="ui">Share Screen</span>, choose the window with your slides, and click <span class="ui">Share</span>. Your camera stays in a small floating window.</li>
+   <li>Start your slideshow, then click <span class="ui">More</span> (or <span class="ui">Record</span>) and choose <span class="ui">Record on this Computer</span>.</li>
+   <li>Present. When you finish, stop recording and click <span class="ui">End</span>, <span class="ui">End Meeting for All</span>.</li>
+   <li>Zoom converts the recording and opens a folder (usually <span class="ui">Documents/Zoom</span>). The MP4 file inside is your video.</li>
+  </ol>
+  <div class="note">Choose "Record on this Computer," not cloud recording, so you get an MP4 file you can upload to YouTube.</div>
+ </div>
+
+ <h3>Before you hit record</h3>
+ <div class="grid2">
+  <div class="tip"><b>Light in front of you</b>Face a window or lamp. Light behind you turns your face into a shadow.</div>
+  <div class="tip"><b>Camera at eye level</b>Stack books under your laptop and look at the camera, not the screen, when you talk.</div>
+  <div class="tip"><b>Do a 10 second test</b>Record a short clip, play it back, and check your voice volume and framing.</div>
+  <div class="tip"><b>Quiet and clean screen</b>Silence your phone and close chats, email, and notifications.</div>
+  <div class="tip"><b>Check the time limit</b>Practice once with a timer so your video fits the assignment length.</div>
+  <div class="tip"><b>Mistakes are fine</b>Pause, take a breath, and keep going. You do not need a perfect take.</div>
+ </div>
+</div></section>
+
+<section class="band alt" id="upload"><div class="wrap">
+ <h2><span class="num">2</span>Upload the video to YouTube as Unlisted</h2>
+ <p class="lede">Unlisted means anyone with the link can watch, but the video does not show up in search or on your channel. That is exactly what you want for class.</p>
+ <ol class="do">
+  <li>Go to <a href="https://studio.youtube.com" target="_blank" rel="noopener">studio.youtube.com</a> and sign in with a Google account. If YouTube asks you to create a channel the first time, follow the prompts.</li>
+  <li>Click <span class="ui">Create</span> (top right), then <span class="ui">Upload videos</span>, and choose your MP4 file.</li>
+  <li><b>Details:</b> give it a clear title, for example "Your Name, Course Number, Presentation Title." A description is optional.</li>
+  <li><b>Audience:</b> choose <span class="ui">No, it's not made for kids</span>. Click <span class="ui">Next</span>.</li>
+  <li>Click <span class="ui">Next</span> on Video elements and Checks.</li>
+  <li><b>Visibility:</b> choose <span class="ui">Unlisted</span>, then click <span class="ui">Save</span>.</li>
+  <li>Copy the video link shown in the window (it looks like <code>https://youtu.be/...</code>). Paste it somewhere safe, such as a note.</li>
+ </ol>
+ <div class="note">Test before you submit: open your link in a private or incognito browser window where you are not signed in. If the video plays there, your instructor can watch it too.</div>
+ <table class="stack">
+  <thead><tr><th>Visibility</th><th>Who can watch</th><th>Use it for class?</th></tr></thead>
+  <tbody>
+   <tr><td><b>Unlisted</b></td><td>Anyone with the link. Not searchable.</td><td>Yes, this is the one to pick.</td></tr>
+   <tr><td>Private</td><td>Only you and people you invite by email.</td><td>No. Your instructor will see "Video unavailable."</td></tr>
+   <tr><td>Public</td><td>Everyone. Shows in search and on your channel.</td><td>Only if your instructor asks for it.</td></tr>
+  </tbody>
+ </table>
+ <h3>Good to know</h3>
+ <div class="grid2">
+  <div class="tip"><b>Videos over 15 minutes</b>YouTube asks you to verify your account with a phone number first. Do this at youtube.com/verify.</div>
+  <div class="tip"><b>Processing time</b>The link works right away, but HD quality can take a little longer to appear. Upload early, not at 11:58 pm.</div>
+  <div class="tip"><b>School account blocked?</b>Some school Google accounts cannot create YouTube channels. Use a personal Google account instead.</div>
+ </div>
+</div></section>
+
+<section class="band" id="canvas"><div class="wrap">
+ <h2><span class="num">3</span>Post the link in Canvas</h2>
+ <p class="lede">Your instructor may ask for the video in an assignment, a discussion, or a page. Pick the way that matches where you are submitting. Embedding shows the player right inside Canvas, which is the friendliest for viewers.</p>
+ <div class="tabs" role="tablist" data-group="cv">
+  <button role="tab" aria-selected="true" data-tab="url">Website URL submission</button>
+  <button role="tab" aria-selected="false" data-tab="embed">Embed the player</button>
+  <button role="tab" aria-selected="false" data-tab="link">Clickable text link</button>
+  <button role="tab" aria-selected="false" data-tab="html">HTML editor</button>
+ </div>
+ <div class="panel" data-panel="cv:url">
+  <h3>Option A. Submit as a Website URL (assignments)</h3>
+  <ol class="do">
+   <li>Open the assignment and click <span class="ui">Start Assignment</span>.</li>
+   <li>Choose the <span class="ui">Website URL</span> tab. If you only see "File Upload" or "Text Entry," use one of the other options.</li>
+   <li>Paste your YouTube link and click <span class="ui">Submit Assignment</span>.</li>
+  </ol>
+  <div class="note">This is the simplest option. Your instructor sees the link and can open it in a new tab.</div>
+ </div>
+ <div class="panel" data-panel="cv:embed" hidden>
+  <h3>Option B. Embed the video player (text entry, discussions, pages)</h3>
+  <ol class="do">
+   <li>Get the embed code: on your YouTube video, click <span class="ui">Share</span>, then <span class="ui">Embed</span>, then <span class="ui">Copy</span>. Or paste your link into the <a href="#tool">embed maker below</a>.</li>
+   <li>In Canvas, open the text box (Text Entry submission, a discussion reply, or a page in edit mode).</li>
+   <li>Click the <b>Embed</b> icon (it looks like a small cloud). If you do not see it, click the three dots <span class="ui">&#8942;</span> at the end of the toolbar to show more icons. You can also use <span class="ui">Insert</span>, <span class="ui">Embed</span> in the menu bar.</li>
+   <li>Paste the embed code into the box and click <span class="ui">Submit</span>. The video player appears in the editor.</li>
+   <li>Click <span class="ui">Post Reply</span>, <span class="ui">Save</span>, or <span class="ui">Submit Assignment</span>.</li>
+  </ol>
+  <div class="note">The YouTube app under the plug (Apps) icon searches public YouTube only, so it will not find your Unlisted video. Use the embed code instead.</div>
+ </div>
+ <div class="panel" data-panel="cv:link" hidden>
+  <h3>Option C. Make a clickable text link</h3>
+  <ol class="do">
+   <li>In any Canvas text box, type a short label, for example "Watch my presentation video."</li>
+   <li>Highlight the label, click the <b>Link</b> icon (a chain), and choose <span class="ui">External Link</span>.</li>
+   <li>Paste your YouTube link and click <span class="ui">Done</span>.</li>
+   <li>Post or submit.</li>
+  </ol>
+  <div class="note">Pasting the plain link into a text box also works. A labeled link just looks tidier.</div>
+ </div>
+ <div class="panel" data-panel="cv:html" hidden>
+  <h3>Option D. Paste code in the HTML editor</h3>
+  <ol class="do">
+   <li>In the Canvas text box, click the <span class="ui">&lt;/&gt;</span> icon at the bottom right of the editor to switch to the HTML editor.</li>
+   <li>Paste the embed code (or the link code) from the <a href="#tool">maker below</a> where you want the video.</li>
+   <li>Click <span class="ui">&lt;/&gt;</span> again to switch back and check that the player shows up, then post or submit.</li>
+  </ol>
+  <div class="note">Use this if the Embed icon is missing in your course, or if you want to add text above and below the video.</div>
+ </div>
+</div></section>
+
+<section class="band alt" id="tool"><div class="wrap">
+ <h2>Link and embed maker</h2>
+ <p class="lede">Paste your YouTube link. You will get a clean link, a short link, and ready-to-paste embed code for Canvas.</p>
+ <div class="tool">
+  <div>
+   <label for="yt">Your YouTube link</label>
+   <input type="text" id="yt" placeholder="https://youtu.be/abc123XYZ00" autocomplete="off" spellcheck="false">
+   <p class="msg" id="ytmsg">Works with youtu.be, youtube.com/watch, Shorts, and Studio links.</p>
+  </div>
+  <div class="out" id="out">
+   <label>Clean link (for Website URL or a text link)</label>
+   <div class="row"><code id="o1">Waiting for a link</code><button class="copy" data-c="o1">Copy</button></div>
+   <label style="margin-top:12px">Embed code (for the Embed icon or HTML editor)</label>
+   <div class="row"><code id="o2">Waiting for a link</code><button class="copy" data-c="o2">Copy</button></div>
+   <label style="margin-top:12px">Clickable text link code (for the HTML editor)</label>
+   <div class="row"><code id="o3">Waiting for a link</code><button class="copy" data-c="o3">Copy</button></div>
+  </div>
+ </div>
+</div></section>
+
+<section class="band" id="fix"><div class="wrap">
+ <h2>Fix a problem</h2>
+ <p class="lede">The most common snags, and what to do.</p>
+ <details><summary>My instructor sees "Video unavailable" or "This video is private."</summary><div><p>The video is set to Private. In YouTube Studio, open <span class="ui">Content</span>, click the visibility next to your video, change it to <span class="ui">Unlisted</span>, and save. The link stays the same, so you do not need to resubmit.</p></div></details>
+ <details><summary>The browser cannot find my camera or microphone.</summary><div><p>Click the lock or camera icon in the address bar and set Camera and Microphone to Allow, then reload. Close other apps that might be using the camera (Zoom, Teams, FaceTime). On a Mac, also check System Settings, Privacy and Security, Camera and Microphone.</p></div></details>
+ <details><summary>The embedded player does not show up in Canvas.</summary><div><p>Make sure you pasted the full embed code that starts with <code>&lt;iframe</code>, not the plain link. If the Embed box does not accept it, use the HTML editor option. You can always fall back to a plain link.</p></div></details>
+ <details><summary>The upload is stuck or very slow.</summary><div><p>Stay on the upload page until it reaches 100 percent. Use a stronger Wi-Fi connection if you can. Large files from screen recorders can be big; exporting at 1080p instead of 4K helps.</p></div></details>
+ <details><summary>I made a mistake in the video. Do I have to start over?</summary><div><p>Small cuts at the beginning or end can be trimmed in YouTube Studio under <span class="ui">Editor</span>, <span class="ui">Trim and cut</span>. For bigger changes, record again and upload the new video, then update your Canvas submission with the new link if resubmission is allowed.</p></div></details>
+ <details><summary>The Zoom recording never appeared.</summary><div><p>Zoom converts the recording after the meeting ends. Wait for the conversion window to finish. Then look in <span class="ui">Documents/Zoom</span>, or open the Zoom app and check <span class="ui">Meetings</span>, <span class="ui">Recorded</span>.</p></div></details>
+</div></section>
+
+<section class="band alt" id="checklist"><div class="wrap">
+ <h2>Final checklist before you submit</h2>
+ <p class="lede">Tick each item. Your progress is saved in this browser.</p>
+ <div class="bar"><i id="bar"></i></div>
+ <p class="msg" id="barmsg"></p>
+ <ul class="check" id="check"></ul>
+</div></section>
+
+<footer class="band"><div class="wrap">
+ <p>Menus in PowerPoint, Canva, Google Slides, Zoom, YouTube, and Canvas change from time to time. If a button has moved, look for the same words nearby, or ask your instructor.</p>
+</div></footer>
+
+<script>
+{
+const items=["My face and my slides are both visible in the video.","I watched the whole video once and the sound is clear.","The video is uploaded to YouTube.","The visibility is set to Unlisted.","The link plays in a private or incognito window.","I posted the link or embedded the video in the right Canvas spot.","I clicked Submit, Save, or Post Reply in Canvas."];
+const KEY="slides2canvas-check";
+let saved=[];
+try{saved=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){saved=[]}
+const list=document.getElementById("check");
+list.innerHTML=items.map((t,i)=>`<li><label><input type="checkbox" data-i="${i}" ${saved.includes(i)?"checked":""}><span>${t}</span></label></li>`).join("");
+const bar=document.getElementById("bar"),bm=document.getElementById("barmsg");
+const update=()=>{
+ const on=[...list.querySelectorAll("input:checked")].map(x=>+x.dataset.i);
+ bar.style.width=(on.length/items.length*100)+"%";
+ bm.textContent=on.length===items.length?"All done. Nice work!":`${on.length} of ${items.length} done`;
+ try{localStorage.setItem(KEY,JSON.stringify(on))}catch(e){}
+};
+list.addEventListener("change",update);update();
+
+document.querySelectorAll(".tabs").forEach(tl=>{
+ const g=tl.dataset.group;
+ tl.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  tl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  document.querySelectorAll(`[data-panel^="${g}:"]`).forEach(p=>p.hidden=p.dataset.panel!==`${g}:${b.dataset.tab}`);
+ });
+});
+
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const getId=u=>{
+ u=u.trim();
+ const m=u.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/|\/video\/)([A-Za-z0-9_-]{11})/);
+ if(m)return m[1];
+ if(/^[A-Za-z0-9_-]{11}$/.test(u))return u;
+ return null;
+};
+const yt=document.getElementById("yt"),msg=document.getElementById("ytmsg");
+const o=[1,2,3].map(n=>document.getElementById("o"+n));
+const raw={o1:"",o2:"",o3:""};
+yt.addEventListener("input",()=>{
+ const id=getId(yt.value);
+ if(!yt.value.trim()){msg.textContent="Works with youtu.be, youtube.com/watch, Shorts, and Studio links.";o.forEach(x=>x.textContent="Waiting for a link");raw.o1=raw.o2=raw.o3="";return}
+ if(!id){msg.textContent="That does not look like a YouTube video link yet. Copy it again from YouTube.";return}
+ msg.textContent="Video found. Copy what you need below.";
+ raw.o1=`https://www.youtube.com/watch?v=${id}`;
+ raw.o2=`<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+ raw.o3=`<a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">Watch my presentation video</a>`;
+ o[0].textContent=raw.o1;o[1].textContent=raw.o2;o[2].textContent=raw.o3;
+});
+document.getElementById("out").addEventListener("click",async e=>{
+ const b=e.target.closest(".copy");if(!b)return;
+ const t=raw[b.dataset.c];
+ if(!t){msg.textContent="Paste your YouTube link first.";return}
+ try{await navigator.clipboard.writeText(t);b.textContent="Copied"}
+ catch(err){const r=document.createRange();r.selectNodeContents(document.getElementById(b.dataset.c));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Press Ctrl+C"}
+ setTimeout(()=>b.textContent="Copy",1800);
+});
+}
+</script>
+</body>
+</html>
