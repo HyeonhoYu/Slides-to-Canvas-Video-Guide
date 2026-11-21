@@ -79,6 +79,16 @@ details>div{padding:0 16px 14px}
 footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
 @media(max-width:760px){.hgrid,.tool{grid-template-columns:minmax(0,1fr)}.fig{min-height:240px}}
 @media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;font-weight:600}.stack td:empty{display:none}}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end}
+.guide{display:flex;flex-direction:column;align-items:center;gap:12px;flex:none}
+.pal{display:block;height:220px;width:auto;filter:drop-shadow(0 10px 10px rgba(0,0,0,.16))}
+.guide.sm .pal{height:170px}
+.say{position:relative;margin:0;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:9px 14px;font-size:15px;font-weight:600;max-width:200px;text-align:center;line-height:1.35}
+.say::after{content:"";position:absolute;bottom:-8px;left:50%;width:13px;height:13px;background:var(--card);border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line);transform:translateX(-50%) rotate(45deg)}
+.hero-fig img{position:absolute;left:0;bottom:0;height:100%;width:auto;filter:drop-shadow(0 12px 14px rgba(0,0,0,.35))}
+.hero-fig svg{left:24%!important;width:76%!important}
+.done .pal{animation:hop .6s 2}@keyframes hop{50%{transform:translateY(-16px)}}
+@media(max-width:600px){.pal{height:150px}.guide.sm .pal{height:120px}.say{font-size:13px;max-width:140px;padding:7px 10px}.intro{gap:10px}}
 .rec{animation:blink 1.6s infinite}@keyframes blink{50%{opacity:.25}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
@@ -96,7 +106,8 @@ footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
     <a class="pill" href="#canvas"><b>3</b> Post in Canvas</a>
    </div>
   </div>
-  <div class="fig" aria-hidden="true">
+  <div class="fig hero-fig" aria-hidden="true">
+   <img src="images/c1.webp" alt="">
    <svg viewBox="0 0 560 340" preserveAspectRatio="xMidYMid meet">
     <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6edf5"/></linearGradient></defs>
     <ellipse cx="170" cy="300" rx="150" ry="14" fill="#000" opacity=".25"/>
@@ -136,8 +147,9 @@ footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
 </div></nav>
 
 <section class="band" id="record"><div class="wrap">
- <h2><span class="num">1</span>Record your presentation with your face visible</h2>
- <p class="lede">Pick the tool you made your slides in. Each one can show your webcam in a small window while you talk through your slides. The goal is one video file (MP4) or a recording you can download.</p>
+ <div class="intro"><div><h2><span class="num">1</span>Record your presentation with your face visible</h2>
+ <p class="lede">Pick the tool you made your slides in. Each one can show your webcam in a small window while you talk through your slides. The goal is one video file (MP4) or a recording you can download.</p></div>
+ <div class="guide "><p class="say">Pick your tool, then press record!</p><img class="pal" src="images/c10.webp" alt=""></div></div>
  <div class="tabs" role="tablist" data-group="rec">
   <button role="tab" aria-selected="true" data-tab="ppt">PowerPoint</button>
   <button role="tab" aria-selected="false" data-tab="canva">Canva</button>
@@ -188,7 +200,7 @@ footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
   <div class="note">Choose "Record on this Computer," not cloud recording, so you get an MP4 file you can upload to YouTube.</div>
  </div>
 
- <h3>Before you hit record</h3>
+ <div class="intro"><h3>Before you hit record</h3><div class="guide sm"><p class="say">Quick tips first!</p><img class="pal" src="images/c5.webp" alt=""></div></div>
  <div class="grid2">
   <div class="tip"><b>Light in front of you</b>Face a window or lamp. Light behind you turns your face into a shadow.</div>
   <div class="tip"><b>Camera at eye level</b>Stack books under your laptop and look at the camera, not the screen, when you talk.</div>
@@ -200,8 +212,9 @@ footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
 </div></section>
 
 <section class="band alt" id="upload"><div class="wrap">
- <h2><span class="num">2</span>Upload the video to YouTube as Unlisted</h2>
- <p class="lede">Unlisted means anyone with the link can watch, but the video does not show up in search or on your channel. That is exactly what you want for class.</p>
+ <div class="intro"><div><h2><span class="num">2</span>Upload the video to YouTube as Unlisted</h2>
+ <p class="lede">Unlisted means anyone with the link can watch, but the video does not show up in search or on your channel. That is exactly what you want for class.</p></div>
+ <div class="guide "><p class="say">Your link is the key to your video.</p><img class="pal" src="images/c2.webp" alt=""></div></div>
  <ol class="do">
   <li>Go to <a href="https://studio.youtube.com" target="_blank" rel="noopener">studio.youtube.com</a> and sign in with a Google account. If YouTube asks you to create a channel the first time, follow the prompts.</li>
   <li>Click <span class="ui">Create</span> (top right), then <span class="ui">Upload videos</span>, and choose your MP4 file.</li>
@@ -220,7 +233,7 @@ footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
    <tr><td>Public</td><td>Everyone. Shows in search and on your channel.</td><td>Only if your instructor asks for it.</td></tr>
   </tbody>
  </table>
- <h3>Good to know</h3>
+ <div class="intro"><h3>Good to know</h3><div class="guide sm"><p class="say">Private locks your instructor out!</p><img class="pal" src="images/c3.webp" alt=""></div></div>
  <div class="grid2">
   <div class="tip"><b>Videos over 15 minutes</b>YouTube asks you to verify your account with a phone number first. Do this at youtube.com/verify.</div>
   <div class="tip"><b>Processing time</b>The link works right away, but HD quality can take a little longer to appear. Upload early, not at 11:58 pm.</div>
@@ -229,8 +242,9 @@ footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
 </div></section>
 
 <section class="band" id="canvas"><div class="wrap">
- <h2><span class="num">3</span>Post the link in Canvas</h2>
- <p class="lede">Your instructor may ask for the video in an assignment, a discussion, or a page. Pick the way that matches where you are submitting. Embedding shows the player right inside Canvas, which is the friendliest for viewers.</p>
+ <div class="intro"><div><h2><span class="num">3</span>Post the link in Canvas</h2>
+ <p class="lede">Your instructor may ask for the video in an assignment, a discussion, or a page. Pick the way that matches where you are submitting. Embedding shows the player right inside Canvas, which is the friendliest for viewers.</p></div>
+ <div class="guide "><p class="say">Time to deliver your work!</p><img class="pal" src="images/c6.webp" alt=""></div></div>
  <div class="tabs" role="tablist" data-group="cv">
   <button role="tab" aria-selected="true" data-tab="url">Website URL submission</button>
   <button role="tab" aria-selected="false" data-tab="embed">Embed the player</button>
@@ -279,8 +293,9 @@ footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
 </div></section>
 
 <section class="band alt" id="tool"><div class="wrap">
- <h2>Link and embed maker</h2>
- <p class="lede">Paste your YouTube link. You will get a clean link, a short link, and ready-to-paste embed code for Canvas.</p>
+ <div class="intro"><div><h2>Link and embed maker</h2>
+ <p class="lede">Paste your YouTube link. You will get a clean link and ready-to-paste embed code for Canvas.</p></div>
+ <div class="guide "><p class="say">Paste your link right here.</p><img class="pal" src="images/c9.webp" alt=""></div></div>
  <div class="tool">
   <div>
    <label for="yt">Your YouTube link</label>
@@ -299,19 +314,22 @@ footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line)}
 </div></section>
 
 <section class="band" id="fix"><div class="wrap">
- <h2>Fix a problem</h2>
- <p class="lede">The most common snags, and what to do.</p>
+ <div class="intro"><div><h2>Fix a problem</h2>
+ <p class="lede">The most common snags, and what to do.</p></div>
+ <div class="guide "><p class="say">Let's investigate.</p><img class="pal" src="images/c4.webp" alt=""></div></div>
  <details><summary>My instructor sees "Video unavailable" or "This video is private."</summary><div><p>The video is set to Private. In YouTube Studio, open <span class="ui">Content</span>, click the visibility next to your video, change it to <span class="ui">Unlisted</span>, and save. The link stays the same, so you do not need to resubmit.</p></div></details>
  <details><summary>The browser cannot find my camera or microphone.</summary><div><p>Click the lock or camera icon in the address bar and set Camera and Microphone to Allow, then reload. Close other apps that might be using the camera (Zoom, Teams, FaceTime). On a Mac, also check System Settings, Privacy and Security, Camera and Microphone.</p></div></details>
  <details><summary>The embedded player does not show up in Canvas.</summary><div><p>Make sure you pasted the full embed code that starts with <code>&lt;iframe</code>, not the plain link. If the Embed box does not accept it, use the HTML editor option. You can always fall back to a plain link.</p></div></details>
  <details><summary>The upload is stuck or very slow.</summary><div><p>Stay on the upload page until it reaches 100 percent. Use a stronger Wi-Fi connection if you can. Large files from screen recorders can be big; exporting at 1080p instead of 4K helps.</p></div></details>
  <details><summary>I made a mistake in the video. Do I have to start over?</summary><div><p>Small cuts at the beginning or end can be trimmed in YouTube Studio under <span class="ui">Editor</span>, <span class="ui">Trim and cut</span>. For bigger changes, record again and upload the new video, then update your Canvas submission with the new link if resubmission is allowed.</p></div></details>
  <details><summary>The Zoom recording never appeared.</summary><div><p>Zoom converts the recording after the meeting ends. Wait for the conversion window to finish. Then look in <span class="ui">Documents/Zoom</span>, or open the Zoom app and check <span class="ui">Meetings</span>, <span class="ui">Recorded</span>.</p></div></details>
+ <div class="intro" style="margin-top:22px"><p class="lede" style="margin:0">Still stuck? Write down what you tried and where it stopped, then ask your instructor or a classmate. A screenshot of the screen helps a lot.</p><div class="guide sm"><p class="say">Hmm, what did I miss?</p><img class="pal" src="images/c8.webp" alt=""></div></div>
 </div></section>
 
 <section class="band alt" id="checklist"><div class="wrap">
- <h2>Final checklist before you submit</h2>
- <p class="lede">Tick each item. Your progress is saved in this browser.</p>
+ <div class="intro" id="finish"><div><h2>Final checklist before you submit</h2>
+ <p class="lede">Tick each item. Your progress is saved in this browser.</p></div>
+ <div class="guide"><p class="say" id="cheer">You've got this!</p><img class="pal" src="images/c7.webp" alt=""></div></div>
  <div class="bar"><i id="bar"></i></div>
  <p class="msg" id="barmsg"></p>
  <ul class="check" id="check"></ul>
@@ -333,7 +351,10 @@ const bar=document.getElementById("bar"),bm=document.getElementById("barmsg");
 const update=()=>{
  const on=[...list.querySelectorAll("input:checked")].map(x=>+x.dataset.i);
  bar.style.width=(on.length/items.length*100)+"%";
- bm.textContent=on.length===items.length?"All done. Nice work!":`${on.length} of ${items.length} done`;
+ const all=on.length===items.length;
+ bm.textContent=all?"All done. Nice work!":`${on.length} of ${items.length} done`;
+ document.getElementById("cheer").textContent=all?"Ready to submit. Great job!":on.length?"Keep going!":"You've got this!";
+ const f=document.getElementById("finish");if(all)f.classList.add("done");else f.classList.remove("done");
  try{localStorage.setItem(KEY,JSON.stringify(on))}catch(e){}
 };
 list.addEventListener("change",update);update();
